@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, Download, ArrowDown } from 'lucide-react';
 import styles from '@/app/hero.module.css';
-import DualTechRings from '../ui/DualTechRings';
+import SingleTechRing from '../ui/SingleTechRing';
 
 const HomePage: React.FC = () => {
   const [displayedText, setDisplayedText] = useState('');
@@ -32,9 +32,9 @@ const HomePage: React.FC = () => {
         {/* Avatar and Tech Ring Container */}
         <div className="relative w-full flex justify-center my-12">
           <div className="relative w-[400px] h-[400px] flex items-center justify-center">
-            <DualTechRings 
-              size={400}
-              profilePicture={<span className="text-4xl md:text-5xl font-bold text-white">FK</span>}
+            <SingleTechRing 
+              size={440}
+              profilePicture={<span className="text-5xl md:text-7xl font-bold text-white">FK</span>}
             />
           </div>
         </div>
