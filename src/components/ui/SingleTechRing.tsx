@@ -62,8 +62,8 @@ const SingleTechRing: React.FC<SingleTechRingProps> = ({
   // Use the main page gradient (green-black-red)
   const gradient = 'linear-gradient(to right top, #0d4a13 0%, #1a2e1a 15%, #000000 35%, #000000 65%, #2e1a1a 85%, #4a0d0d 100%)';
 
-  const iconSize = 112; // doubled from 56
-  const svgSize = 76;   // doubled from 38
+  const iconSize = 112; 
+  const svgSize = 76;  
 
   const iconStyle = (angle: number) => ({
     position: 'absolute' as const,
@@ -113,8 +113,8 @@ const SingleTechRing: React.FC<SingleTechRingProps> = ({
       <div
         className="absolute left-1/2 top-1/2 z-10 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-xl"
         style={{
-          width: size * 0.76, // doubled
-          height: size * 0.76,
+          width: size * 0.52,
+          height: size * 0.52,
           transform: 'translate(-50%, -50%)',
         }}
       >

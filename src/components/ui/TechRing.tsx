@@ -138,7 +138,7 @@ const TechRing: React.FC<TechRingProps> = ({ technologies, radius = 150, classNa
             <div
               key={tech}
               className="absolute w-10 h-10 flex items-center justify-center transition-all duration-300 opacity-0"
-              title={tech}
+              title={String(tech)}
             >
               <div 
                 className="w-10 h-10 rounded-full flex items-center justify-center p-2 transition-all duration-300 hover:scale-110 hover:shadow-lg"

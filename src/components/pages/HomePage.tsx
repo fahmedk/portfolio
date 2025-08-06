@@ -4,25 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, Download, ArrowDown } from 'lucide-react';
 import styles from '@/app/hero.module.css';
 import SingleTechRing from '../ui/SingleTechRing';
+import profileImg from '@/assets/logos/IMG_7590.jpeg';
+import dynamic from 'next/dynamic';
+
+const ClientTypingText = dynamic(() => import('./ClientTypingText'), { ssr: false });
 
 const HomePage: React.FC = () => {
-  const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'Software Engineer | The City College of New York';
-  const typingSpeed = 100; // milliseconds per character
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const timer = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(timer);
-      }
-    }, typingSpeed);
-
-    return () => clearInterval(timer);
-  }, []);
+  
 
   return (
     <section id="home" className={styles.heroContainer}>
@@ -32,17 +20,24 @@ const HomePage: React.FC = () => {
         {/* Avatar and Tech Ring Container */}
         <div className="relative w-full flex justify-center my-12">
           <div className="relative w-[400px] h-[400px] flex items-center justify-center">
-            <SingleTechRing 
-              size={440}
-              profilePicture={<span className="text-5xl md:text-7xl font-bold text-white">FK</span>}
-            />
+            <div className="mt-16">
+              <SingleTechRing 
+                size={360}
+                profilePicture={
+                  <img 
+                    src={typeof profileImg === 'string' ? profileImg : profileImg.src}
+                    alt="Profile"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                  />
+                }
+              />
+            </div>
           </div>
         </div>
         
-        <h1 className={styles.heroTitle}>Furqan Khan</h1>
+        <h1 className={styles.heroTitle + " text-white"}>Furqan Khan</h1>
         <p className={styles.heroDescription}>
-          <span className={styles.typingText}>{displayedText}</span>
-          <span className={styles.typingCursor}>|</span>
+          <ClientTypingText />
         </p>
           
         {/* Terminal */}

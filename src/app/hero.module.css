@@ -7,9 +7,13 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 6rem 2rem 2rem; /* Added more padding at the top */
+  padding: 1.5rem 2rem 2rem; /* Less top padding */
   text-align: center;
-  margin-top: 4rem; /* Additional margin to push content below fixed header */
+  margin-top: 4rem; /* Sits just below header */
+}
+
+.ringContainer {
+  margin: 0 0 0.5rem 0;
 }
 
 .heroContent {
@@ -20,29 +24,31 @@
 }
 
 .heroSubtitle {
+  margin: 0.5rem 0 0.5rem 0;
+
   font-size: 1.25rem;
   color: #fff;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   opacity: 0.8;
   text-transform: uppercase;
   letter-spacing: 0.2em;
 }
 
 .heroTitle {
+  margin: 0 0 0.25rem 0;
+
   font-size: 3.5rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
 }
 
 .heroDescription {
+  margin: 0 0 0.25rem 0;
+
   font-size: 1.25rem;
-  color: #a0aec0;
+  color: #fff;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
