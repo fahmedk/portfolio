@@ -14,8 +14,8 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
 
   const sections = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'about', label: 'About Me', icon: User },
     { id: 'experience', label: 'Experiences', icon: Briefcase },
+    { id: 'about', label: 'About Me', icon: User },
     { id: 'projects', label: 'Projects', icon: FolderOpen },
     { id: 'contact', label: 'Contact', icon: Mail },
   ];
@@ -41,7 +41,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
     <div className="min-h-screen">
       {/* Navigation */}
       <nav className={`navbar transition-all duration-300 ${
-        isScrolled ? 'bg-opacity-95' : 'bg-opacity-80'
+        isScrolled ? 'navbar-scrolled' : ''
       }`}>
         <div className="nav-container">
           <a href="#home" className="nav-logo" onClick={() => scrollToSection('home')}>

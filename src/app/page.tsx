@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'projects', 'contact'];
+      const sections = ['home', 'experience', 'about', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const sectionId of sections) {
@@ -35,8 +35,8 @@ export default function Home() {
   return (
     <ModernLayout currentSection={currentSection} onSectionChange={setCurrentSection}>
       <HomePage />
-      <AboutPage />
       <ExperiencePage />
+      <AboutPage />
       <ProjectsPage />
       <ContactPage />
     </ModernLayout>

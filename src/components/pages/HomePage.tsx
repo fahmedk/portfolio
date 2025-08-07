@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
   return (
     <section id="home" className={styles.heroContainer}>
       <div className={styles.heroContent}>
-        <p className={styles.heroSubtitle}>Introducing</p>
+        <p className={styles.heroSubtitle}>Meet...</p>
         
         {/* Avatar and Tech Ring Container */}
         <div className="relative w-full flex justify-center my-12">
@@ -88,65 +88,7 @@ const HomePage: React.FC = () => {
             </div>
         </div>
         
-        {/* Tech Stack Icons */}
-        <div className="tech-grid max-w-2xl mx-auto">
-          <div className="tech-item">
-            <div className="tech-icon">Py</div>
-            <span className="tech-name">Python</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">JS</div>
-            <span className="tech-name">JavaScript</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">TS</div>
-            <span className="tech-name">TypeScript</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">⚛️</div>
-            <span className="tech-name">React</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">▲</div>
-            <span className="tech-name">Next.js</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">☁️</div>
-            <span className="tech-name">AWS</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">🐳</div>
-            <span className="tech-name">Docker</span>
-          </div>
-          <div className="tech-item">
-            <div className="tech-icon">🔥</div>
-            <span className="tech-name">Firebase</span>
-          </div>
-        </div>
-        
-        {/* Contact Info */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-          <a
-            href="mailto:furqankhan.cs@gmail.com"
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-          >
-            <Mail size={20} />
-            Get In Touch
-          </a>
-          <a
-            href="tel:+19293004276"
-            className="flex items-center gap-2 px-6 py-3 border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white rounded-lg transition-colors"
-          >
-            <Phone size={20} />
-            (929) 300-4276
-          </a>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="flex flex-col items-center mt-16 animate-bounce">
-          <p className="text-gray-400 text-sm mb-2">Scroll to explore</p>
-          <ArrowDown size={20} className="text-gray-500" />
-        </div>
+
       </div>
     </section>
   );
