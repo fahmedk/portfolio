@@ -53,11 +53,11 @@ const ExperiencePage: React.FC = () => {
 
           {/* Wabtec Experience */}
           <div
-            className="flex flex-col lg:flex-row"
+            className="flex flex-row"
             style={{ alignItems: 'flex-start', gap: '1rem', marginTop: '-8rem' }}
           >
-            {/* Left Side - Wabtec Image */}
-            <div className="flex-shrink-0">
+            {/* Left Side - Image with Border */}
+            <div className="flex-shrink-0 flex">
               <div
                 className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
                 style={{ width: '720px', height: '720px', padding: '16px' }}
@@ -73,34 +73,45 @@ const ExperiencePage: React.FC = () => {
                   }}
                 />
               </div>
+              
+              {/* Vertical Border Line - Adjacent to Image */}
+              <div
+                style={{
+                  width: '2px',
+                  height: '300px',
+                  backgroundColor: 'white',
+                  marginLeft: '1rem',
+                  marginTop: '213px',
+                }}
+              />
             </div>
 
             {/* Right Side - Description */}
-            <div className="flex-1">
-              <div className="space-y-6">
+            <div className="flex-1" style={{ marginLeft: '1rem', marginTop: '13rem' }}>
+              <div className="space-y-4">
                 <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">
-                    AI/Cloud Engineer Intern
+                  <h3 className="text-8xl text-white mb-3" style={{ fontFamily: '"Paul Grotesk", sans-serif', fontWeight: 500 }}>
+                    AI Engineer
                   </h3>
-                  <p className="text-blue-400 text-lg font-medium">
-                    Wabtec Corporation • June 2024 - Present
+                  <p className="text-white text-lg mb-4">
+                    <span className="font-bold">Wabtec Corporation</span> - <span className="italic">May 2025 - August 2025</span>
                   </p>
                 </div>
 
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  At Wabtec Corporation, I'm leading AI infrastructure development
-                  and cloud solutions for the transportation industry. I help shape
-                  the future of transportation technology by building systems that
-                  make our platforms more secure and efficient for our global
-                  community of users.
-                </p>
+                <div className="space-y-3">
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    At Wabtec Corporation, I lead Gen AI infrastructure development
+                    and cloud solutions research for the transportation industry. I helped shape
+                    the future of corporate technology by building systems that
+                    make our platforms more secure and efficient for our globalf
+                    community of users.
+                  </p>
 
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  From enhancing security to optimizing performance, every line of
-                  code is written with our users' experience in mind. Tech stack:
-                  AWS, Kubernetes, Amazon Bedrock, Docker, Python, and AI/ML. For
-                  specific contributions, see resume here.
-                </p>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    From enhancing security to optimizing performance, every line of
+                    code was written with our users' experience in mind.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
