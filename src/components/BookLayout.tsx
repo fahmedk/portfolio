@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Home, User, Briefcase, FolderOpen, Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Home, User, Briefcase, FolderOpen, Mail, Github, Linkedin, ExternalLink, FileText, ChevronDown } from 'lucide-react';
 
 interface ModernLayoutProps {
   children: React.ReactNode;
@@ -11,6 +11,8 @@ interface ModernLayoutProps {
 
 const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, onSectionChange }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [linksOpen, setLinksOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const sections = [
     { id: 'home', label: 'Home', icon: Home },
@@ -29,11 +31,39 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const onMouseDown = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setLinksOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLinksOpen(false);
+    };
+    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onMouseDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Get navbar height dynamically
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+      const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementTop - navbarHeight - 20; // Extra 20px buffer
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
       onSectionChange(sectionId);
+    } else {
+      window.location.href = `/#${sectionId}`;
     }
   };
 
@@ -44,7 +74,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
         isScrolled ? 'navbar-scrolled' : ''
       }`}>
         <div className="nav-container">
-          <a href="#home" className="nav-logo" onClick={() => scrollToSection('home')}>
+          <a href="#home" className="nav-logo" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>
             Furqan Khan
           </a>
           
@@ -58,6 +88,67 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                   >
                     {section.label}
                   </a>
+                ) : section.id === 'contact' ? (
+                  <div className="relative" ref={menuRef}>
+                    <button
+                      className={`nav-link inline-flex items-center gap-1`}
+                      aria-haspopup="menu"
+                      aria-expanded={linksOpen}
+                      onClick={() => setLinksOpen((v) => !v)}
+                    >
+                      Contact <ChevronDown size={16} />
+                    </button>
+                    {linksOpen && (
+                      <div
+                        role="menu"
+                        aria-label="Quick links"
+                        className="absolute right-0 mt-2 w-56 bg-black/80 border border-gray-700 rounded-md shadow-lg p-2 backdrop-blur"
+                      >
+                        <a
+                          role="menuitem"
+                          href="mailto:furqankhan.cs@gmail.com"
+                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          aria-label="Email"
+                          onClick={() => setLinksOpen(false)}
+                        >
+                          <Mail size={16} /> Email
+                        </a>
+                        <a
+                          role="menuitem"
+                          href="/resume.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          aria-label="Resume"
+                          onClick={() => setLinksOpen(false)}
+                        >
+                          <FileText size={16} /> Resume
+                        </a>
+                        <a
+                          role="menuitem"
+                          href="https://github.com/fahmedk"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          aria-label="GitHub"
+                          onClick={() => setLinksOpen(false)}
+                        >
+                          <Github size={16} /> GitHub
+                        </a>
+                        <a
+                          role="menuitem"
+                          href="https://www.linkedin.com/in/furqan-a-khan/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          aria-label="LinkedIn"
+                          onClick={() => setLinksOpen(false)}
+                        >
+                          <Linkedin size={16} /> LinkedIn
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <button
                     className={`nav-link ${
@@ -71,25 +162,6 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
               </li>
             ))}
           </ul>
-          
-          <div className="flex gap-4">
-            <a
-              href="https://github.com/fahmedk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/furqan-a-khan/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
         </div>
       </nav>
 
@@ -99,14 +171,52 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
       </main>
 
       {/* Footer */}
-      <footer className="bg-black/20 border-t border-gray-800 py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400">
-            2025 Furqan Khan. All rights reserved.
-          </p>
-          <p className="text-gray-500 text-sm mt-2">
-            Built using Next.js & TypeScript. No templates were harmed in the making.
-          </p>
+      <footer className="bg-black/20 border-t border-gray-800 py-10">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center gap-6 text-gray-400 mb-6">
+            <div className="hidden sm:block h-px w-24 bg-gray-700" />
+            <div className="flex items-center gap-6">
+              <a
+                href="https://www.linkedin.com/in/furqan-a-khan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:text-white transition-colors"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href="mailto:furqankhan.cs@gmail.com"
+                aria-label="Email"
+                className="hover:text-white transition-colors"
+              >
+                <Mail size={20} />
+              </a>
+              <a
+                href="https://github.com/fahmedk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:text-white transition-colors"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume"
+                className="hover:text-white transition-colors"
+              >
+                <FileText size={20} />
+              </a>
+            </div>
+            <div className="hidden sm:block h-px w-24 bg-gray-700" />
+          </div>
+          <div className="text-center">
+            <p className="text-gray-400">2025 Furqan Khan. All rights reserved.</p>
+            <p className="text-gray-500 text-sm mt-2">Built using Next.js & TypeScript. No templates were harmed in the making.</p>
+          </div>
         </div>
       </footer>
     </div>

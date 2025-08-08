@@ -11,8 +11,9 @@ const ExperiencePage: React.FC = () => {
       // remove the "section" class so we don’t get 100vh centering
       style={{
         display: 'block',
-        paddingTop: '2rem',    // pull closer to top
-        paddingBottom: '4rem', // whatever bottom padding you like
+        paddingTop: '1rem',    // pull closer to top
+        paddingBottom: '0rem', // whatever bottom padding you like
+        scrollMarginTop: '120px', // ensure proper scroll offset
       }}
     >
       <div

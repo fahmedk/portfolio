@@ -52,9 +52,13 @@ const ProjectsPage: React.FC = () => {
   return (
     <section id="projects" className="section"
     style={{
-      minHeight: 'auto',
-      paddingTop: '3rem',
-      paddingBottom: '1.5rem' }}>
+      display: 'block',          // override .section flex
+      minHeight: 'auto',         // override 100vh
+      paddingTop: '1rem',
+      paddingBottom: '0.5rem',
+      marginTop: '-1rem',
+      scrollMarginTop: '120px',  // ensure proper scroll offset
+    }}>
 
       <div className="container">
         <div className="fade-in-up">
@@ -115,7 +119,7 @@ const ProjectsPage: React.FC = () => {
           {/* No additional projects; show only one row of three cards */}
           
           {/* CTA Section */}
-          <div className="text-center mt-6">
+          <div className="text-center mt-6" style={{ display: 'none' }}>
             <div className="card max-w-2xl mx-auto">
               <h3 className="card-title">Want to see more?</h3>
               <p className="text-gray-400 mb-6">

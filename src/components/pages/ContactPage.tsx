@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageCircle, Calendar } 
 
 const ContactPage: React.FC = () => {
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" style={{ display: 'none' }}>
       <div className="container">
         <div className="fade-in-up">
           <h2 className="section-title">Get In Touch</h2>
