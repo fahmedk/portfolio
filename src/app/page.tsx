@@ -17,8 +17,8 @@ const getInitialSection = () => {
 };
 
 export default function Home() {
-  // Initialize section from URL hash on first client render to prevent Home flash
-  const [currentSection, setCurrentSection] = useState(getInitialSection);
+  // Initialize with empty string for SSR, will update from hash after mount
+  const [currentSection, setCurrentSection] = useState<string>('');
   
   // Track if we just triggered a programmatic scroll
   const isManualScrollRef = useRef(false);
@@ -50,7 +50,6 @@ export default function Home() {
   // Handle initial scroll - used layoutEffect to avoid flash to Home
   useEffect(() => {
     // Always reset the manual scroll flag on mount
-    // This ensures section changes work after About navigation
     isManualScrollRef.current = false;
     
     // Get hash from URL if present
@@ -60,8 +59,10 @@ export default function Home() {
     if (!hasScrolledToInitialSectionRef.current && 
         hash && ['home', 'experience', 'projects', 'contact'].includes(hash)) {
       
+      // Set currentSection from hash before scrolling
+      setCurrentSection(hash);
+      
       // Use requestAnimationFrame to make the scroll happen right after paint
-      // This prevents the flash to Home top before scrolling
       requestAnimationFrame(() => {
         const element = document.getElementById(hash);
         if (element) {
@@ -95,6 +96,9 @@ export default function Home() {
         // Mark that we've handled the initial scroll
         hasScrolledToInitialSectionRef.current = true;
       });
+    } else if (!hasScrolledToInitialSectionRef.current) {
+      // If no hash, default to 'home'
+      setCurrentSection('home');
     }
   }, []);
 
