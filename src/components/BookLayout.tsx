@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Home, User, Briefcase, FolderOpen, Mail, Github, Linkedin, ExternalLink, FileText, ChevronDown } from 'lucide-react';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface ModernLayoutProps {
   children: React.ReactNode;
@@ -22,6 +23,9 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
     { id: 'contact', label: 'Contact', icon: Mail },
   ];
 
+  const router = useRouter();
+  const pathname = usePathname();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -30,6 +34,30 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  // Handle section highlighting when navigating from About to Home sections
+  useEffect(() => {
+    // Only run on client
+    if (typeof window === 'undefined') return;
+    
+    // If we're on the home page and there's a hash in the URL
+    // (likely coming from About → section)
+    if (pathname === '/' && window.location.hash) {
+      // 1. Clear focus from any nav elements to prevent sticky highlight
+      const activeElement = document.activeElement as HTMLElement | null;
+      if (activeElement?.classList.contains('nav-link') || 
+          activeElement?.classList.contains('nav-logo')) {
+        activeElement.blur();
+      }
+      
+      // 2. Get the section from the hash and update currentSection
+      const hash = window.location.hash.replace('#', '');
+      if (hash && ['home', 'experience', 'projects', 'contact'].includes(hash)) {
+        // Force update the current section immediately
+        onSectionChange(hash);
+      }
+    }
+  }, [pathname, onSectionChange]);
 
   useEffect(() => {
     const onMouseDown = (e: MouseEvent) => {
@@ -48,7 +76,31 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
     };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, e?: React.MouseEvent) => {
+    // Handle cross-route navigation (from /about to /#section)
+    if (pathname !== '/' && sectionId !== 'about') {
+      // Don't call onSectionChange for cross-route - let Home handle it
+      // Use router.push with { scroll: false } to prevent default hash jump
+      router.push(`/#${sectionId}`, { scroll: false });
+      return;
+    }
+    
+    // Call onSectionChange for same-route navigation
+    // This immediately updates active state before scroll happens
+    onSectionChange(sectionId);
+    
+    // For same-route navigation, update the URL hash without triggering a scroll
+    // This keeps the URL hash and currentSection state in sync
+    if (pathname === '/' && sectionId !== 'about') {
+      window.history.replaceState(null, '', `/#${sectionId}`);
+    }
+    
+    // Blur the clicked button to prevent focus styles from persisting
+    if (e?.currentTarget) {
+      const btn = e.currentTarget as HTMLButtonElement;
+      btn.blur();
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       // Get navbar height dynamically
@@ -57,13 +109,19 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
       const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementTop - navbarHeight - 20; // Extra 20px buffer
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       });
-      onSectionChange(sectionId);
-    } else {
+    } else if (sectionId !== 'about') {
+      // Only use hash navigation for non-about sections
       window.location.href = `/#${sectionId}`;
+    } else {
+      // For About, use router
+      router.push('/about');
     }
   };
 
@@ -85,6 +143,11 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                   <a
                     href="/about"
                     className={`nav-link ${currentSection === 'about' ? 'active' : ''}`}
+                    onClick={(e) => {
+                      // Handle About link with consistent behavior
+                      e.preventDefault();
+                      router.push('/about');
+                    }}
                   >
                     {section.label}
                   </a>
@@ -154,7 +217,8 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                     className={`nav-link ${
                       currentSection === section.id ? 'active' : ''
                     }`}
-                    onClick={() => scrollToSection(section.id)}
+                    onClick={(e) => scrollToSection(section.id, e)}
+                    aria-current={currentSection === section.id ? 'page' : undefined}
                   >
                     {section.label}
                   </button>

@@ -46,6 +46,11 @@ body {
   min-height: auto;
   padding: 6rem 1.5rem 4rem;
   display: block;
+  scroll-margin-top: 120px; /* Consistent scroll offset for all sections */
+}
+
+/* Ensure sections are targeted consistently for hash-based navigation */
+#home, #experience, #projects, #contact {
   scroll-margin-top: 120px;
 }
 
@@ -301,6 +306,23 @@ body {
   background-clip: text;
   text-fill-color: transparent;
   transform: translateY(-2px);
+}
+
+/* Prevent focus styles from looking like hover/active */
+.nav-link:focus:not(:focus-visible) {
+  outline: none;
+  background: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white;
+  background-clip: text;
+  text-fill-color: white;
+  transform: none;
+}
+
+/* Provide visible focus for keyboard users */
+.nav-link:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.3);
+  outline-offset: 2px;
 }
 
 .nav-link.active {
