@@ -54,13 +54,13 @@ const ExperiencePage: React.FC = () => {
           {/* Wabtec Experience */}
           <div
             className="flex flex-row"
-            style={{ alignItems: 'flex-start', gap: '1rem', marginTop: '-8rem' }}
+            style={{ alignItems: 'flex-start', gap: '0rem', marginTop: '-8rem' }}
           >
             {/* Left Side - Image with Border */}
             <div className="flex-shrink-0 flex">
               <div
                 className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
-                style={{ width: '720px', height: '720px', padding: '16px' }}
+                style={{ width: '720px', height: '720px', padding: '16px 0 16px 16px', overflow: "hidden"}}
               >
                 <img
                   src={wabtecLogo.src}
@@ -70,24 +70,35 @@ const ExperiencePage: React.FC = () => {
                     height: '528px',
                     objectFit: 'contain',
                     borderRadius: '8px',
+                    transform: 'translateX(-40px)',
+                    willChange: 'transform',
                   }}
                 />
               </div>
-              
-              {/* Vertical Border Line - Adjacent to Image */}
-              <div
-                style={{
-                  width: '2px',
-                  height: '300px',
-                  backgroundColor: 'white',
-                  marginLeft: '1rem',
-                  marginTop: '213px',
-                }}
-              />
             </div>
 
+            {/* Vertical Divider between Image and Text */}
+            <div
+              aria-hidden="true"
+              style={{
+                width: '2px',
+                height: '295px',
+                backgroundColor: 'white',
+                marginLeft: 'calc(min(100%, 1200px)/2 - 700px)', // nudge 20px further left
+                marginRight: '22px', // spacing before text
+                alignSelf: 'flex-start',
+                marginTop: '13rem',
+              }}
+            />
+
             {/* Right Side - Description */}
-            <div className="flex-1" style={{ marginLeft: '1rem', marginTop: '13rem' }}>
+            <div
+              className="flex-1"
+              style={{
+                marginLeft: '0.25rem', // small gap from divider
+                marginTop: '13rem',
+              }}
+            >
               <div className="space-y-4">
                 <div>
                   <h3 className="text-8xl text-white mb-3" style={{ fontFamily: '"Paul Grotesk", sans-serif', fontWeight: 500 }}>
@@ -103,10 +114,10 @@ const ExperiencePage: React.FC = () => {
                     At Wabtec Corporation, I lead Gen AI infrastructure development
                     and cloud solutions research for the transportation industry. I helped shape
                     the future of corporate technology by building systems that
-                    make our platforms more secure and efficient for our globalf
+                    make our platforms more secure and efficient for our global
                     community of users.
                   </p>
-
+                  
                   <p className="text-gray-300 text-base leading-relaxed">
                     From enhancing security to optimizing performance, every line of
                     code was written with our users' experience in mind.

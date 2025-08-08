@@ -51,14 +51,23 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
           <ul className="nav-links">
             {sections.map((section) => (
               <li key={section.id}>
-                <button
-                  className={`nav-link ${
-                    currentSection === section.id ? 'active' : ''
-                  }`}
-                  onClick={() => scrollToSection(section.id)}
-                >
-                  {section.label}
-                </button>
+                {section.id === 'about' ? (
+                  <a
+                    href="/about"
+                    className={`nav-link ${currentSection === 'about' ? 'active' : ''}`}
+                  >
+                    {section.label}
+                  </a>
+                ) : (
+                  <button
+                    className={`nav-link ${
+                      currentSection === section.id ? 'active' : ''
+                    }`}
+                    onClick={() => scrollToSection(section.id)}
+                  >
+                    {section.label}
+                  </button>
+                )}
               </li>
             ))}
           </ul>

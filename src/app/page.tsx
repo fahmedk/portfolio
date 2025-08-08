@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import ModernLayout from '@/components/BookLayout';
 import HomePage from '@/components/pages/HomePage';
-import AboutPage from '@/components/pages/AboutPage';
+// import AboutPage from '@/components/pages/AboutPage';
 import ExperiencePage from '@/components/pages/ExperiencePage';
 import ProjectsPage from '@/components/pages/ProjectsPage';
 import ContactPage from '@/components/pages/ContactPage';
@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'experience', 'about', 'projects', 'contact'];
+      const sections = ['home', 'experience', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const sectionId of sections) {
@@ -36,7 +36,7 @@ export default function Home() {
     <ModernLayout currentSection={currentSection} onSectionChange={setCurrentSection}>
       <HomePage />
       <ExperiencePage />
-      <AboutPage />
+      {/* About section removed from homepage; reachable via header link */}
       <ProjectsPage />
       <ContactPage />
     </ModernLayout>
