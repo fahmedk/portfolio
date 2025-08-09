@@ -13,6 +13,7 @@ interface ModernLayoutProps {
 const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, onSectionChange }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [linksOpen, setLinksOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const sections = [
@@ -136,6 +137,18 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
             Furqan Khan
           </a>
           
+          {/* Hamburger button - only shows on mobile */}
+          <button 
+            className="hamburger-menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          {/* Desktop nav links */}
           <ul className="nav-links">
             {sections.map((section) => (
               <li key={section.id}>
@@ -226,6 +239,79 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
               </li>
             ))}
           </ul>
+          
+          {/* Mobile menu overlay */}
+          <div 
+            className={`mobile-menu-overlay ${
+              mobileMenuOpen ? 'mobile-menu-open' : ''
+            }`}
+            onClick={() => setMobileMenuOpen(false)}
+          ></div>
+          
+          {/* Mobile menu - slides from right */}
+          <div 
+            className={`mobile-menu ${
+              mobileMenuOpen ? 'mobile-menu-open' : ''
+            }`}
+            ref={menuRef}
+          >
+            <div className="mobile-menu-content">
+              <button 
+                className="mobile-menu-close"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+              
+              <ul className="mobile-menu-links">
+                {sections.map((section) => (
+                  <li key={section.id}>
+                    {section.id === 'about' ? (
+                      <a
+                        href="/about"
+                        className="mobile-menu-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMobileMenuOpen(false);
+                          router.push('/about');
+                        }}
+                      >
+                        {section.label}
+                      </a>
+                    ) : (
+                      <button
+                        className="mobile-menu-link"
+                        onClick={(e) => {
+                          scrollToSection(section.id, e);
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        {section.label}
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="mobile-menu-footer">
+                <div className="mobile-menu-social">
+                  <a href="mailto:furqankhan.cs@gmail.com" aria-label="Email">
+                    <Mail size={20} />
+                  </a>
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume">
+                    <FileText size={20} />
+                  </a>
+                  <a href="https://github.com/fahmedk" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github size={20} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/furqan-a-khan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
 
