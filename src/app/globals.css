@@ -915,6 +915,15 @@ body {
   #experience .flex-shrink-0.flex {
     width: 100% !important;
     justify-content: center !important;
+    transform: translateX(40px) !important; /* Nudge image to the right on stacked layout */
+  }
+  /* Make inner gradient box padding symmetric so content can center visually */
+  #experience .flex-shrink-0.flex > div {
+    padding: 16px !important;
+  }
+  /* Remove inner image translate in stacked layout so it's truly centered */
+  #experience .flex-shrink-0.flex img {
+    transform: none !important;
   }
   
   /* Hide the absolutely positioned divider in stacked layout */
@@ -924,7 +933,8 @@ body {
   
   /* Center the text content */
   #experience .flex-1 {
-    margin-top: 3rem !important;
+    margin-top: -10rem !important; /* Negative margin to pull text closer to image */
+    margin-bottom: 4rem !important; /* Add space before Projects section */
     padding-left: 0 !important; /* Remove padding in stacked layout */
     text-align: center !important;
     width: 100% !important;
@@ -943,6 +953,16 @@ body {
 
   .hamburger-menu {
     display: flex;
+  }
+
+  /* Reset image nudge on small mobile to keep it perfectly centered */
+  #experience .flex-shrink-0.flex {
+    transform: none !important;
+  }
+
+  /* Also remove inner image translate so it centers perfectly on mobile */
+  #experience .flex-shrink-0.flex img {
+    transform: none !important;
   }
 
   .hero-title {
