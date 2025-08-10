@@ -64,7 +64,7 @@ const ProjectsPage: React.FC = () => {
         <div className="fade-in-up">
           <h2 className="section-title">Projects</h2>
           <p className="section-subtitle">
-            From <span className="text-yellow-400">passion projects</span> to quick builds.
+            A collection of <span className="active-pill">projects</span> I built.
           </p>
           
           {/* Featured Projects */}

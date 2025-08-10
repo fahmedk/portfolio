@@ -10,7 +10,7 @@ const AboutPage: React.FC = () => {
         <div className="fade-in-up">
           <h2 className="section-title">About Me</h2>
           <p className="section-subtitle">
-            Striving to develop impactful tech.
+            Who I am off the keyboard.
           </p>
           
           <div className="grid grid-2 gap-8 items-center">
@@ -18,41 +18,25 @@ const AboutPage: React.FC = () => {
             <div className="fade-in-left">
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I'm a passionate AI/Cloud Engineer and Software Developer currently pursuing my 
-                  Master's in Computer Science at Georgia Tech. My journey in technology is driven 
-                  by a desire to create intelligent solutions that make a meaningful impact.
+                  When I’m off the keyboard, I’m usually meeting people. I like hopping between
+                  communities in tech, art, culture, and local meetups, trading stories and ideas.
+                  Hearing what people are building, learning, and dreaming about keeps me curious
+                  and grounded.
                 </p>
                 
                 <p className="text-gray-400 leading-relaxed">
-                  Currently working as an AI/Cloud Engineer Intern at Wabtec Corporation, where I 
-                  leverage cutting-edge technology to solve complex challenges in the transportation 
-                  industry. Previously, I gained valuable experience as a Software Engineer Intern 
-                  at The Hipe Network.
+                  I love big conversations about how we live and what matters. Coffee chats,
+                  long walks, late-night debates — I’m in. I listen first, ask good questions,
+                  and learn a lot from different perspectives.
                 </p>
                 
                 <p className="text-gray-400 leading-relaxed">
-                  When I'm not coding, you'll find me exploring new technologies, contributing to 
-                  open-source projects, or mentoring fellow developers. I believe in the power of 
-                  technology to transform lives and am committed to using my skills for positive change.
+                  That curiosity shows up in my work too. I try to build with empathy, keep things
+                  simple, and ship thoughtfully. If we meet, I’ll probably ask what you’re tinkering
+                  with and what you can’t stop thinking about.
                 </p>
                 
-                {/* Quick Facts */}
-                <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="text-blue-400" size={20} />
-                    <div>
-                      <p className="text-white font-medium">Location</p>
-                      <p className="text-gray-400 text-sm">New York, NY</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Calendar className="text-blue-400" size={20} />
-                    <div>
-                      <p className="text-white font-medium">Experience</p>
-                      <p className="text-gray-400 text-sm">3+ Years</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
             

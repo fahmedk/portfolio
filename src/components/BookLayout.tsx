@@ -14,7 +14,8 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
   const [isScrolled, setIsScrolled] = useState(false);
   const [linksOpen, setLinksOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const contactMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const sections = [
     { id: 'home', label: 'Home', icon: Home },
@@ -62,7 +63,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
 
   useEffect(() => {
     const onMouseDown = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      if (contactMenuRef.current && !contactMenuRef.current.contains(e.target as Node)) {
         setLinksOpen(false);
       }
     };
@@ -180,7 +181,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                     {section.label}
                   </a>
                 ) : section.id === 'contact' ? (
-                  <div className="relative" ref={menuRef}>
+                  <div className="relative" ref={contactMenuRef}>
                     <button
                       className={`nav-link inline-flex items-center gap-1`}
                       aria-haspopup="menu"
@@ -200,7 +201,12 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           href="mailto:furqankhan.cs@gmail.com"
                           className="contact-link"
                           aria-label="Email"
-                          onClick={() => setLinksOpen(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.location.href = 'mailto:furqankhan.cs@gmail.com';
+                            setTimeout(() => setLinksOpen(false), 0);
+                          }}
                         >
                           <Mail size={16} /> Email
                         </a>
@@ -211,7 +217,12 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           rel="noopener noreferrer"
                           className="contact-link"
                           aria-label="Resume"
-                          onClick={() => setLinksOpen(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open('/resume.pdf', '_blank', 'noopener');
+                            setTimeout(() => setLinksOpen(false), 0);
+                          }}
                         >
                           <FileText size={16} /> Resume
                         </a>
@@ -222,7 +233,12 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           rel="noopener noreferrer"
                           className="contact-link"
                           aria-label="GitHub"
-                          onClick={() => setLinksOpen(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open('https://github.com/fahmedk', '_blank', 'noopener');
+                            setTimeout(() => setLinksOpen(false), 0);
+                          }}
                         >
                           <Github size={16} /> GitHub
                         </a>
@@ -233,7 +249,12 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           rel="noopener noreferrer"
                           className="contact-link"
                           aria-label="LinkedIn"
-                          onClick={() => setLinksOpen(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.open('https://www.linkedin.com/in/furqan-a-khan/', '_blank', 'noopener');
+                            setTimeout(() => setLinksOpen(false), 0);
+                          }}
                         >
                           <Linkedin size={16} /> LinkedIn
                         </a>
@@ -254,6 +275,44 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
               </li>
             ))}
           </ul>
+
+          {/* Header social/resume icons (desktop only) */}
+          <div className="hidden sm:flex items-center gap-6 footer-social">
+            <a
+              href="mailto:furqankhan.cs@gmail.com"
+              aria-label="Email"
+              className="transition-colors"
+            >
+              <Mail size={18} />
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Resume"
+              className="transition-colors"
+            >
+              <FileText size={18} />
+            </a>
+            <a
+              href="https://github.com/fahmedk"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="transition-colors"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/furqan-a-khan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="transition-colors"
+            >
+              <Linkedin size={18} />
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -271,7 +330,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
         className={`mobile-menu ${
           mobileMenuOpen ? 'mobile-menu-open' : ''
         }`}
-        ref={menuRef}
+        ref={mobileMenuRef}
       >
         <div className="mobile-menu-content">
           <button 
@@ -283,7 +342,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
           </button>
           
           <ul className="mobile-menu-links">
-            {sections.map((section) => (
+            {sections.filter((s) => s.id !== 'contact').map((section) => (
               <li key={section.id}>
                 {section.id === 'about' ? (
                   <a
@@ -381,7 +440,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
           </div>
           <div className="text-center">
             <p className="text-gray-400">2025 Furqan Khan. All rights reserved.</p>
-            <p className="text-gray-500 text-sm mt-2">Built using Next.js & TypeScript. No templates were harmed in the making.</p>
+            <p className="text-gray-500 text-sm mt-2">Built using Next.js & TypeScript.</p>
           </div>
         </div>
       </footer>
