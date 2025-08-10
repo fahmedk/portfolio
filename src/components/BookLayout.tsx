@@ -231,7 +231,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           href="https://www.linkedin.com/in/furqan-a-khan/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          className="contact-link"
                           aria-label="LinkedIn"
                           onClick={() => setLinksOpen(false)}
                         >
