@@ -417,7 +417,9 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-primary);
+  /* gradient outline instead of solid red */
+  border-color: transparent;
+  border-image: var(--gradient-primary) 1;
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
 }
 
@@ -451,7 +453,12 @@ body {
 
 .tag {
   background: rgba(59, 130, 246, 0.1);
-  color: var(--accent-primary);
+  /* gradient text instead of solid red */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -484,7 +491,9 @@ body {
 
 .project-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-primary);
+  /* gradient outline instead of solid red */
+  border-color: transparent;
+  border-image: var(--gradient-primary) 1;
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
 }
 
@@ -526,15 +535,35 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--accent-primary);
+  /* gradient text instead of solid red */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
+/* Make the GitHub icon in project links use the gradient as its background */
+.project-link svg {
+  width: 18px;
+  height: 18px;
+  color: #ffffff; /* icon glyph */
+  background: var(--gradient-primary); /* gradient behind icon */
+  border-radius: 6px;
+  padding: 2px;
+}
+
 .project-link:hover {
-  color: var(--accent-secondary);
+  /* Keep gradient on hover instead of changing to a solid color */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 /* Tech Stack */
@@ -559,7 +588,9 @@ body {
 
 .tech-item:hover {
   transform: translateY(-2px);
-  border-color: var(--accent-primary);
+  /* gradient outline instead of solid red */
+  border-color: transparent;
+  border-image: var(--gradient-primary) 1;
 }
 
 .tech-icon {
@@ -656,7 +687,7 @@ body {
 }
 
 .hamburger-menu:hover span {
-  background: #dc2626;
+  background: var(--gradient-primary);
 }
 
 /* Mobile Menu */
