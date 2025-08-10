@@ -85,10 +85,12 @@ const ExperiencePage: React.FC = () => {
                 width: '2px',
                 height: '295px',
                 backgroundColor: 'white',
-                marginLeft: 'calc(min(100%, 1200px)/2 - 700px)', // nudge 20px further left
+                marginLeft: '0px', // Fixed position that doesn't change with screen width
                 marginRight: '22px', // spacing before text
                 alignSelf: 'flex-start',
                 marginTop: '13rem',
+                position: 'absolute', // Position absolutely within the flex container
+                left: '660px', // Fixed position further to the left of the image edge
               }}
             />
 

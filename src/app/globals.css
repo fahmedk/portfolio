@@ -875,56 +875,60 @@ body {
   color: #ffffff;
 }
 
-/* Responsive Design */
-/* Experience section responsive layout - only changes at specific breakpoints where overlap would occur */
-@media (max-width: 1200px) {
-  /* First breakpoint - adjust spacing but keep side-by-side layout */
-  #experience .bg-gradient-to-br {
-    width: 600px !important;
-    height: 600px !important;
-  }
-  
-  #experience img {
-    width: 450px !important;
-    height: 450px !important;
-  }
+/* Experience section with original divider position */
+#experience .flex.flex-row {
+  /* Keep flex layout but ensure text wraps */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
 }
 
-@media (max-width: 992px) {
-  /* Second breakpoint - switch to stacked layout to prevent overlap */
+#experience .flex-shrink-0.flex {
+  /* Keep image container fixed */
+  flex-shrink: 0 !important;
+  width: 720px !important;
+}
+
+/* Keep the divider's original styling and positioning */
+/* DO NOT override the inline styles that position the divider */
+/* The original inline style has: marginLeft: 'calc(min(100%, 1200px)/2 - 700px)' */
+
+#experience .flex-1 {
+  /* Critical for text wrapping */
+  min-width: 0 !important;
+  flex: 1 !important;
+  overflow-wrap: break-word !important;
+  /* Keep original spacing */
+  margin-left: 0.25rem !important;
+}
+
+/* Responsive Design */
+/* Single breakpoint at the exact overlap threshold */
+@media (max-width: 1120px) {
+  /* Switch to stacked layout */
   #experience .flex.flex-row {
     flex-direction: column !important;
     align-items: center !important;
   }
   
+  /* Center the image container */
   #experience .flex-shrink-0.flex {
     width: 100% !important;
     justify-content: center !important;
   }
   
-  #experience .bg-gradient-to-br {
-    width: 500px !important;
-    height: 500px !important;
-    margin: 0 auto !important;
-  }
-  
-  #experience img {
-    width: 400px !important;
-    height: 400px !important;
-    transform: none !important;
-  }
-  
-  /* Hide the vertical divider when in stacked layout */
+  /* Hide the absolutely positioned divider in stacked layout */
   #experience [aria-hidden="true"] {
     display: none !important;
   }
   
-  /* Adjust text container spacing */
+  /* Center the text content */
   #experience .flex-1 {
     margin-top: 3rem !important;
-    margin-left: 0 !important;
+    padding-left: 0 !important; /* Remove padding in stacked layout */
     text-align: center !important;
     width: 100% !important;
+    max-width: 800px !important; /* For better readability */
   }
 }
 
