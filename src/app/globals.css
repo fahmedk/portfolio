@@ -551,8 +551,10 @@ body {
 .project-link svg {
   width: 18px;
   height: 18px;
-  color: #ffffff; /* icon glyph */
-  background: var(--gradient-primary); /* gradient behind icon */
+  color: #ffffff;
+  /* icon glyph */
+  background: var(--gradient-primary);
+  /* gradient behind icon */
   border-radius: 6px;
   padding: 2px;
 }
@@ -697,8 +699,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: transparent; /* keep rest of screen visible */
-  z-index: 1100; /* above navbar */
+  background: transparent;
+  /* keep rest of screen visible */
+  z-index: 1100;
+  /* above navbar */
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -718,7 +722,8 @@ body {
   /* Solid panel so background content doesn't show */
   background: #0a0a0f !important;
   background-image: none !important;
-  z-index: 1101; /* above overlay and navbar */
+  z-index: 1101;
+  /* above overlay and navbar */
   transform: translateX(100%);
   transition: transform 0.3s ease;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -820,7 +825,8 @@ body {
 
 /* Footer social icons: match mobile menu icon button styling */
 .footer-social {
-  gap: 0.5rem; /* a bit of spacing between buttons */
+  gap: 0.5rem;
+  /* a bit of spacing between buttons */
 }
 
 .footer-social a {
@@ -855,8 +861,10 @@ body {
   padding: 0.5rem 0.75rem;
   color: #ffffff;
   border-radius: 10px;
-  background: transparent; /* remove bubble look by default */
-  border: 1px solid transparent; /* remove bubble border by default */
+  background: transparent;
+  /* remove bubble look by default */
+  border: 1px solid transparent;
+  /* remove bubble border by default */
   text-decoration: none;
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
@@ -868,6 +876,58 @@ body {
 }
 
 /* Responsive Design */
+/* Experience section responsive layout - only changes at specific breakpoints where overlap would occur */
+@media (max-width: 1200px) {
+  /* First breakpoint - adjust spacing but keep side-by-side layout */
+  #experience .bg-gradient-to-br {
+    width: 600px !important;
+    height: 600px !important;
+  }
+  
+  #experience img {
+    width: 450px !important;
+    height: 450px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Second breakpoint - switch to stacked layout to prevent overlap */
+  #experience .flex.flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  #experience .flex-shrink-0.flex {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  #experience .bg-gradient-to-br {
+    width: 500px !important;
+    height: 500px !important;
+    margin: 0 auto !important;
+  }
+  
+  #experience img {
+    width: 400px !important;
+    height: 400px !important;
+    transform: none !important;
+  }
+  
+  /* Hide the vertical divider when in stacked layout */
+  #experience [aria-hidden="true"] {
+    display: none !important;
+  }
+  
+  /* Adjust text container spacing */
+  #experience .flex-1 {
+    margin-top: 3rem !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem;
