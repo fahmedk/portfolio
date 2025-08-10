@@ -818,6 +818,54 @@ body {
   color: #ffffff;
 }
 
+/* Footer social icons: match mobile menu icon button styling */
+.footer-social {
+  gap: 0.5rem; /* a bit of spacing between buttons */
+}
+
+.footer-social a {
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/* Contact dropdown items: style like the mobile menu icon buttons */
+.contact-dropdown {
+  border-radius: 12px;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: #ffffff;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-link:hover {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: #ffffff;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {

@@ -193,12 +193,12 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                       <div
                         role="menu"
                         aria-label="Quick links"
-                        className="absolute right-0 mt-2 w-56 bg-black/80 border border-gray-700 rounded-md shadow-lg p-2 backdrop-blur"
+                        className="absolute right-0 mt-2 w-56 bg-black/80 border border-gray-700 rounded-md shadow-lg p-2 backdrop-blur contact-dropdown"
                       >
                         <a
                           role="menuitem"
                           href="mailto:furqankhan.cs@gmail.com"
-                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          className="contact-link"
                           aria-label="Email"
                           onClick={() => setLinksOpen(false)}
                         >
@@ -209,7 +209,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           href="/resume.pdf"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          className="contact-link"
                           aria-label="Resume"
                           onClick={() => setLinksOpen(false)}
                         >
@@ -220,7 +220,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                           href="https://github.com/fahmedk"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 text-gray-200"
+                          className="contact-link"
                           aria-label="GitHub"
                           onClick={() => setLinksOpen(false)}
                         >
@@ -341,20 +341,20 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-6 text-gray-400 mb-6">
             <div className="hidden sm:block h-px w-24 bg-gray-700" />
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 footer-social">
               <a
                 href="https://www.linkedin.com/in/furqan-a-khan/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="hover:text-white transition-colors"
+                className="transition-colors"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="mailto:furqankhan.cs@gmail.com"
                 aria-label="Email"
-                className="hover:text-white transition-colors"
+                className="transition-colors"
               >
                 <Mail size={20} />
               </a>
@@ -363,7 +363,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="hover:text-white transition-colors"
+                className="transition-colors"
               >
                 <Github size={20} />
               </a>
@@ -372,7 +372,7 @@ const ModernLayout: React.FC<ModernLayoutProps> = ({ children, currentSection, o
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Resume"
-                className="hover:text-white transition-colors"
+                className="transition-colors"
               >
                 <FileText size={20} />
               </a>
