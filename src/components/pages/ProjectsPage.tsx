@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code, Users, Calendar, Brain, Zap, Globe, FolderOpen, Star, Database, Cloud } from 'lucide-react';
+import { Github, ExternalLink, Brain, Zap, Globe } from 'lucide-react';
 
 const ProjectsPage: React.FC = () => {
   const projects = [
@@ -47,7 +46,8 @@ const ProjectsPage: React.FC = () => {
     },
   ];
 
-  const additionalProjects: never[] = [];
+  // Additional projects for future expansion
+  const additionalProjects = [/* Add projects here */];
 
   return (
     <section id="projects" className="section"

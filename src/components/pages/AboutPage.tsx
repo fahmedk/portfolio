@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { GraduationCap, Award, Code, Heart, MapPin, Calendar } from 'lucide-react';
+import { GraduationCap, Award, Code, Heart } from 'lucide-react';
 
 const AboutPage: React.FC = () => {
   return (

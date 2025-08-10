@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Home, User, Briefcase, FolderOpen, Mail, Github, Linkedin, ExternalLink, FileText, ChevronDown } from 'lucide-react';
+import { Home, User, Briefcase, FolderOpen, Mail, Github, Linkedin, FileText, ChevronDown } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 
 interface ModernLayoutProps {

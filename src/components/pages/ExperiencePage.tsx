@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Building, Calendar, MapPin } from 'lucide-react';
+// Icons removed as they're not used in current design
 import wabtecLogo from '@/assets/logos/wabtec.png';
 
 const ExperiencePage: React.FC = () => {
@@ -123,7 +123,7 @@ const ExperiencePage: React.FC = () => {
                   
                   <p className="text-gray-300 text-base leading-relaxed">
                     From enhancing security to optimizing performance, every line of
-                    code was written with our users' experience in mind.
+                    code was written with our users&apos; experience in mind.
                   </p>
                 </div>
               </div>

@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Download, ArrowDown } from 'lucide-react';
+import React from 'react';
 import styles from '@/app/hero.module.css';
 import SingleTechRing from '../ui/SingleTechRing';
 import profileImg from '@/assets/logos/IMG_7590.jpeg';
@@ -56,7 +55,7 @@ const HomePage: React.FC = () => {
                 On branch justice
               </div>
               <div className="mb-2 text-gray-400 text-sm">
-                Your branch is up to date with 'origin/hope'.
+                Your branch is up to date with &apos;origin/hope&apos;.
               </div>
               
               <div className="mb-2">
@@ -77,9 +76,9 @@ const HomePage: React.FC = () => {
               </div>
               
               <div className="mt-4 mb-2 text-center">
-                <div className="text-yellow-300 text-sm">"The light that shines twice as bright lasts half as long."</div>
+                <div className="text-yellow-300 text-sm">&ldquo;The light that shines twice as bright lasts half as long.&rdquo;</div>
                 <div className="text-blue-300 text-sm mt-1">But what if it never stops shining?</div>
-                <div className="text-green-300 text-sm mt-2">"Dreams make us who we are, pushing us to reach beyond the stars and become the heroes we were meant to be."</div>
+                <div className="text-green-300 text-sm mt-2">&ldquo;Dreams make us who we are, pushing us to reach beyond the stars and become the heroes we were meant to be.&rdquo;</div>
               </div>
               
               <div className="mb-2">

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'next/navigation';
 import ModernLayout from '@/components/BookLayout';
 import HomePage from '@/components/pages/HomePage';
 // import AboutPage from '@/components/pages/AboutPage';
@@ -9,12 +8,7 @@ import ExperiencePage from '@/components/pages/ExperiencePage';
 import ProjectsPage from '@/components/pages/ProjectsPage';
 import ContactPage from '@/components/pages/ContactPage';
 
-// Client-side only initial section detection
-const getInitialSection = () => {
-  if (typeof window === 'undefined') return '';
-  const hash = window.location.hash.replace('#', '');
-  return hash && ['home', 'experience', 'projects', 'contact'].includes(hash) ? hash : 'home';
-};
+
 
 export default function Home() {
   // Initialize with empty string for SSR, will update from hash after mount

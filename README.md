@@ -1,36 +1,195 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Furqan Khan - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS v4. Features smooth animations, interactive tech rings, and a clean, professional design.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Tech Stack**: Next.js 15 with App Router, TypeScript, Tailwind CSS v4
+- **Responsive Design**: Mobile-first approach with desktop enhancements
+- **Interactive Elements**: Animated tech rings, smooth scrolling, gradient effects
+- **Contact Integration**: Working contact dropdown with email, resume, GitHub, and LinkedIn links
+- **Performance Optimized**: Clean build, minimal bundle size, fast loading
+- **Accessibility**: Keyboard navigation, ARIA labels, semantic HTML
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion, CSS animations
+- **Icons**: Lucide React
+- **Deployment**: Vercel (recommended)
+
+## 📋 Prerequisites
+
+- Node.js 18.0.0 or higher
+- npm, yarn, pnpm, or bun
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Add your resume**
+   ```bash
+   # Place your resume PDF in the public directory
+   cp your-resume.pdf public/resume.pdf
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📜 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript compiler check
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Global styles and Tailwind imports
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx          # Main page component
+├── components/
+│   ├── BookLayout.tsx     # Main layout with navigation
+│   ├── pages/            # Page components
+│   │   ├── HomePage.tsx
+│   │   ├── AboutPage.tsx
+│   │   ├── ExperiencePage.tsx
+│   │   ├── ProjectsPage.tsx
+│   │   └── ContactPage.tsx
+│   └── ui/               # Reusable UI components
+│       ├── TechRing.tsx
+│       ├── SingleTechRing.tsx
+│       └── DualTechRings.tsx
+├── assets/
+│   └── logos/            # Tech logos and images
+public/
+├── resume.pdf            # Your resume (add this file)
+└── ...                   # Other static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Navigation
+- **Desktop**: Full navbar with Contact dropdown (Email, Resume, GitHub, LinkedIn)
+- **Mobile**: Hamburger menu (Contact excluded, quick icons in header)
+- **Smooth Scrolling**: Hash-based navigation with proper offset handling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Contact Integration
+- **Email**: `mailto:furqankhan.cs@gmail.com`
+- **Resume**: Opens `/resume.pdf` in new tab
+- **GitHub**: Links to `https://github.com/fahmedk`
+- **LinkedIn**: Links to `https://www.linkedin.com/in/furqan-a-khan/`
 
-## Learn More
+### Responsive Design
+- **Experience Section**: Maintains divider position, text wraps responsively
+- **Mobile Layout**: Stacked layout with optimized spacing
+- **Gradient Tags**: Consistent pill styling across Projects/About sections
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Vercel (Recommended)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Connect to Vercel**
+   - Create account at [vercel.com](https://vercel.com)
+   - Connect your GitHub repository
+   - Import project
 
-## Deploy on Vercel
+2. **Configure Settings**
+   - Framework: Next.js (auto-detected)
+   - Build Command: `next build` (auto-configured)
+   - Node Version: 18+ (auto-detected)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Deploy**
+   - Push to main branch for production deployment
+   - Pull requests create preview deployments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Custom Domain** (Optional)
+   - Add domain in Vercel dashboard
+   - Configure DNS as instructed
+   - Enable automatic HTTPS
+
+### Alternative Platforms
+
+- **Netlify**: Works with Next.js runtime
+- **Cloudflare Pages**: Supports Next.js with edge functions
+
+## 📝 Customization
+
+### Update Resume
+Replace `public/resume.pdf` with your resume file.
+
+### Modify Contact Information
+Update links in `src/components/BookLayout.tsx`:
+- Email: Change `mailto:furqankhan.cs@gmail.com`
+- GitHub: Update `https://github.com/fahmedk`
+- LinkedIn: Update `https://www.linkedin.com/in/furqan-a-khan/`
+
+### Add Projects
+Edit `src/components/pages/ProjectsPage.tsx` to add your projects.
+
+### Update About Section
+Modify `src/components/pages/AboutPage.tsx` for personal information.
+
+## 🔧 Development Notes
+
+- **TypeScript**: Strict mode enabled for better type safety
+- **ESLint**: Configured with Next.js and TypeScript rules
+- **Tailwind**: v4 with modern CSS features
+- **Performance**: Optimized images, minimal bundle size
+- **Accessibility**: WCAG compliant, keyboard navigation
+
+## 📊 Build Output
+
+Current build size:
+- Main page: ~9.69 kB
+- First Load JS: ~112 kB
+- Shared chunks: ~99.6 kB
+
+## 🐛 Troubleshooting
+
+### Build Issues
+```bash
+# Clear Next.js cache
+rm -rf .next
+npm run build
+```
+
+### Type Errors
+```bash
+# Run type check
+npm run typecheck
+```
+
+### Lint Issues
+```bash
+# Fix auto-fixable issues
+npm run lint -- --fix
+```
+
+## 📄 License
+
+This project is for personal portfolio use. Feel free to use as inspiration for your own portfolio.
+
+## 🤝 Contributing
+
+This is a personal portfolio project. If you find bugs or have suggestions, feel free to open an issue.

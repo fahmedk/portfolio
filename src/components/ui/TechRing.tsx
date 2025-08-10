@@ -103,7 +103,7 @@ const TechRing: React.FC<TechRingProps> = ({ technologies, radius = 150, classNa
         const zIndex = Math.round((Math.sin(angle) + 1) * 10) + 1;
         el.style.zIndex = zIndex.toString();
         // Ensure TypeScript knows we're setting a valid style property
-        (el.style as any).willChange = 'transform, opacity';
+        el.style.willChange = 'transform, opacity';
       });
 
       animationRef.current = requestAnimationFrame(animate);
@@ -126,7 +126,7 @@ const TechRing: React.FC<TechRingProps> = ({ technologies, radius = 150, classNa
         className={`relative w-[400px] h-[400px] pointer-events-none ${className}`}
         style={{
           transform: 'translateZ(0)', // Force hardware acceleration
-          willChange: 'transform, opacity' as any // Type assertion for willChange
+          willChange: 'transform, opacity'
         }}
       >
         {technologies.map((tech) => {

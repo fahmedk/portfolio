@@ -79,7 +79,7 @@ const SingleTechRing: React.FC<SingleTechRingProps> = ({
     justifyContent: 'center',
     border: '3px solid #fff5',
     zIndex: 2,
-    pointerEvents: 'auto' as any,
+    pointerEvents: 'auto' as const,
     transition: 'transform 0.2s',
   });
 

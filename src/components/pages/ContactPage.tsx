@@ -10,7 +10,7 @@ const ContactPage: React.FC = () => {
         <div className="fade-in-up">
           <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">
-            Let's connect and build something amazing together.
+            Let&apos;s connect and build something amazing together.
           </p>
           
           <div className="grid md:grid-2 gap-12 max-w-4xl mx-auto">
@@ -97,9 +97,9 @@ const ContactPage: React.FC = () => {
             {/* Contact Form / CTA */}
             <div className="space-y-8">
               <div className="card">
-                <h3 className="card-title">Let's Work Together</h3>
+                <h3 className="card-title">Let&apos;s Work Together</h3>
                 <p className="text-gray-400 mb-6">
-                  I'm always interested in hearing about new opportunities, 
+                  I&apos;m always interested in hearing about new opportunities, 
                   exciting projects, and connecting with fellow developers and innovators.
                 </p>
                 

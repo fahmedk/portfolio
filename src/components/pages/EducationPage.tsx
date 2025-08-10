@@ -44,7 +44,7 @@ export default function EducationPage() {
                 </div>
 
                 <p className="text-lg leading-relaxed">
-                  Currently pursuing advanced studies in Computer Science at one of the nation's premier 
+                  Currently pursuing advanced studies in Computer Science at one of the nation&apos;s premier 
                   technological institutions, focusing on artificial intelligence, machine learning, and 
                   cutting-edge software engineering practices.
                 </p>

@@ -68,7 +68,7 @@ const DualTechRings: React.FC<DualTechRingsProps> = ({
     top: '50%',
     width: 0,
     height: 0,
-    pointerEvents: 'none' as any,
+    pointerEvents: 'none' as const,
   });
 
   const iconStyle = (angle: number, radius: number) => ({
@@ -83,10 +83,13 @@ const DualTechRings: React.FC<DualTechRingsProps> = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    pointerEvents: 'auto' as any,
+    pointerEvents: 'auto' as const,
     border: '2px solid #222',
     zIndex: 2,
   });
+
+  const outerRadius = size * 0.39;
+  const innerRadius = size * 0.25;
 
   return (
     <div
@@ -94,22 +97,22 @@ const DualTechRings: React.FC<DualTechRingsProps> = ({
       style={{ width: size, height: size }}
     >
       {/* Outer ring */}
-      <div ref={outerRef} style={ringStyle(size * 0.39)}>
+      <div style={ringStyle(outerRadius)} ref={outerRef}>
         {outerLogos.map((logo, i) => {
           const angle = (2 * Math.PI * i) / outerLogos.length;
           return (
-            <div key={i} style={iconStyle(angle, size * 0.39)}>
+            <div key={i} style={iconStyle(angle, outerRadius)}>
               <img src={logo.src} alt="tech logo" style={{ width: 40, height: 40 }} />
             </div>
           );
         })}
       </div>
       {/* Inner ring */}
-      <div ref={innerRef} style={ringStyle(size * 0.25)}>
+      <div style={ringStyle(innerRadius)} ref={innerRef}>
         {innerLogos.map((logo, i) => {
           const angle = (2 * Math.PI * i) / innerLogos.length;
           return (
-            <div key={i} style={iconStyle(angle, size * 0.25)}>
+            <div key={i} style={iconStyle(angle, innerRadius)}>
               <img src={logo.src} alt="tech logo" style={{ width: 32, height: 32 }} />
             </div>
           );
