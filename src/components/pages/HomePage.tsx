@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
         
         {/* Avatar and Tech Ring Container */}
         <div className="relative w-full flex justify-center my-12">
-          <div className="relative w-[400px] h-[400px] flex items-center justify-center">
+          <div className="relative w-full max-w-[400px] h-[400px] flex items-center justify-center mx-auto">
             <div className="mt-16">
               <SingleTechRing 
                 size={360}

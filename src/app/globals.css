@@ -997,6 +997,27 @@ body {
   .hero-title {
     font-size: 2.5rem;
   }
+  
+  /* Mobile optimizations for homepage */
+  .terminal {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* Ensure tech ring is properly sized on mobile */
+  #home .relative.w-full.max-w-\[400px\].h-\[400px\] {
+    height: 350px !important;
+  }
+  
+  /* Adjust SingleTechRing size on mobile */
+  #home .mt-16 {
+    margin-top: 0 !important;
+  }
+  
+  #home .mt-16 > div {
+    transform: scale(0.9);
+  }
 
   .section-title {
     font-size: 2rem;

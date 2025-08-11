@@ -108,7 +108,7 @@ const ExperiencePage: React.FC = () => {
                     AI Engineer
                   </h3>
                   <p className="text-white text-lg mb-4">
-                    <span className="font-bold">Wabtec Corporation</span> - <span className="italic">May 2025 - August 2025</span>
+                    <span className="font-bold">Wabtec Corporation</span> - <span className="italic">May 2024 - August 2024</span>
                   </p>
                 </div>
 
